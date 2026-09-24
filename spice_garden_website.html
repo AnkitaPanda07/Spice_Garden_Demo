@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Garden - Authentic Odia & Spiced Delights of Berhampur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pistachio: {
+                            50: '#f4f6f0',
+                            100: '#e5eadd',
+                            200: '#cbd6bd',
+                            300: '#abc096',
+                            400: '#93C572', // Core Pistachio Green
+                            500: '#8A9A5B', // Core Darker Pistachio
+                            600: '#6b7a42',
+                            700: '#525e33',
+                            800: '#434c2b',
+                            900: '#383f25',
+                        },
+                        choco: {
+                            50: '#f7f4f3',
+                            100: '#efe6e4',
+                            200: '#dccac6',
+                            300: '#c2a8a2',
+                            400: '#a38079',
+                            500: '#8a625b',
+                            600: '#6f4b45',
+                            700: '#5a3b36',
+                            800: '#4A2E2B', // Core Chocolaty Brown
+                            900: '#3E2723', // Dark Chocolaty Brown
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(62, 39, 35, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .pattern-bg {
+            background-color: #fcfbf9;
+            background-image: radial-gradient(#8A9A5B 0.75px, transparent 0.75px), radial-gradient(#8A9A5B 0.75px, #fcfbf9 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0,15px 15px;
+            background-opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="bg-[#FAF8F5] text-choco-900 font-sans antialiased selection:bg-pistachio-400 selection:text-choco-900">
+
+    <!-- Header / Sticky Navigation -->
+    <header class="sticky top-0 z-50 glass-nav border-b border-choco-800 text-white transition-all duration-300 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Restaurant Name -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-full bg-pistachio-400 border-2 border-pistachio-200 flex items-center justify-center text-choco-900 shadow-inner group-hover:rotate-12 transition-transform duration-300">
+                        <i class="fa-solid fa-utensils text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-wide text-white block leading-tight group-hover:text-pistachio-400 transition-colors">Spice Garden</span>
+                        <span class="text-[10px] uppercase tracking-widest text-pistachio-300 block font-medium">Berhampur • Odisha</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-pistachio-400 transition-colors">About Us</a>
+                    <a href="#menu" class="hover:text-pistachio-400 transition-colors">Our Menu</a>
+                    <a href="#gallery" class="hover:text-pistachio-400 transition-colors">Gallery</a>
+                    <a href="#digital-menu" class="hover:text-pistachio-400 transition-colors">Digital Menu</a>
+                    <a href="#contact" class="hover:text-pistachio-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center">
+                    <button onclick="openModal()" class="bg-pistachio-500 hover:bg-pistachio-400 text-choco-900 font-semibold px-5 py-2.5 rounded-full text-sm transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fa-regular fa-calendar-check mr-2"></i>Reserve Table
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-gray-300 hover:text-white hover:bg-choco-800 focus:outline-none">
+                        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-choco-900 border-b border-choco-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-choco-800 hover:text-pistachio-400">About Us</a>
+            <a href="#menu" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-choco-800 hover:text-pistachio-400">Our Menu</a>
+            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-choco-800 hover:text-pistachio-400">Gallery</a>
+            <a href="#digital-menu" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-choco-800 hover:text-pistachio-400">Digital Menu</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium hover:bg-choco-800 hover:text-pistachio-400">Contact</a>
+            <button onclick="openModal(); toggleMobileMenu();" class="w-full mt-2 bg-pistachio-500 hover:bg-pistachio-400 text-choco-900 font-semibold px-4 py-3 rounded-xl text-center shadow-md">
+                Reserve Table
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-choco-900 text-white overflow-hidden py-20 lg:py-32">
+        <div class="absolute inset-0 opacity-25">
+            <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&q=80&w=1600" alt="Authentic Spices" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-choco-900 via-choco-900/90 to-transparent"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-8 lg:col-span-7 space-y-6">
+                <span class="inline-flex items-center gap-2 bg-pistachio-500/20 text-pistachio-300 border border-pistachio-500/30 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-location-dot text-pistachio-400"></i> Heart of Silk City, Berhampur
+                </span>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                    Authentic Odia & Spiced Delights of <span class="text-pistachio-400 italic">Berhampur</span>
+                </h1>
+                <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Savor the traditional heritage, aromatic spices, and iconic flavors of Odisha. From world-famous Berhampuri Puri Upma to fragrant Bamboo Chicken, experience culinary excellence crafted with passion.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#menu" class="bg-pistachio-500 hover:bg-pistachio-400 text-choco-900 font-bold px-7 py-3.5 rounded-full transition-all shadow-lg hover:shadow-pistachio-500/20 inline-flex items-center gap-2">
+                        <span>View Menu</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                    <button onclick="openModal()" class="bg-transparent hover:bg-white/10 text-white border-2 border-white/30 font-semibold px-7 py-3.5 rounded-full transition-all">
+                        Reserve Table
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-2xl bg-pistachio-50/50 border border-pistachio-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-pistachio-500 text-choco-900 flex items-center justify-center shrink-0 shadow-sm text-xl">
+                        <i class="fa-solid fa-pepper-hot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-choco-900 mb-1">Authentic Spices</h3>
+                        <p class="text-sm text-gray-600">Freshly ground local spices sourced directly from Ganjam's regional markets.</p>
+                    </div>
+                </div>
+                <div class="p-6 rounded-2xl bg-choco-50/50 border border-choco-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-choco-800 text-pistachio-400 flex items-center justify-center shrink-0 shadow-sm text-xl">
+                        <i class="fa-solid fa-fire-burner"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-choco-900 mb-1">Traditional Cooking</h3>
+                        <p class="text-sm text-gray-600">Slow-cooked recipes preserving century-old Odia culinary traditions.</p>
+                    </div>
+                </div>
+                <div class="p-6 rounded-2xl bg-pistachio-50/50 border border-pistachio-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-pistachio-500 text-choco-900 flex items-center justify-center shrink-0 shadow-sm text-xl">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-choco-900 mb-1">Fresh Ingredients</h3>
+                        <p class="text-sm text-gray-600">Pure veg & non-veg delicacies prepared with fresh, premium produce daily.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 pattern-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-pistachio-600 font-semibold text-sm uppercase tracking-widest">Taste the Tradition</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-choco-900 mt-1 mb-4">Our Featured Menu</h2>
+                <div class="w-20 h-1 bg-pistachio-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Menu Category Filters -->
+            <div class="flex justify-center flex-wrap gap-2 mb-12">
+                <button onclick="filterMenu('all')" class="menu-filter-btn active bg-choco-900 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-sm">All Dishes</button>
+                <button onclick="filterMenu('special')" class="menu-filter-btn bg-white hover:bg-pistachio-100 text-choco-900 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium transition-all shadow-sm">Berhampur Specials</button>
+                <button onclick="filterMenu('veg')" class="menu-filter-btn bg-white hover:bg-pistachio-100 text-choco-900 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium transition-all shadow-sm">Odia Veg</button>
+                <button onclick="filterMenu('nonveg')" class="menu-filter-btn bg-white hover:bg-pistachio-100 text-choco-900 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium transition-all shadow-sm">Non-Veg</button>
+                <button onclick="filterMenu('sweet')" class="menu-filter-btn bg-white hover:bg-pistachio-100 text-choco-900 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium transition-all shadow-sm">Desserts</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="menu-card category-special category-veg bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&q=80&w=600" alt="Puri Upma" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400/8A9A5B/FFFFFF?text=Berhampur+Puri+Upma'">
+                        <span class="absolute top-3 right-3 bg-pistachio-500 text-choco-900 font-bold px-3 py-1 rounded-full text-xs shadow">Bestseller</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-bold text-xl text-choco-900">Berhampur Famous Puri Upma</h3>
+                                <span class="font-bold text-lg text-pistachio-600">₹90</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Crispy golden puris served over warm semolina upma, accompanied by spicy Ghuguni and sweet coconut chutney.</p>
+                        </div>
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100 text-xs text-gray-500">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-600 inline-block"></span> Pure Veg • Breakfast Classic
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-card category-special category-nonveg bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&q=80&w=600" alt="Bamboo Chicken" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/3E2723/FFFFFF?text=Bamboo+Chicken'">
+                        <span class="absolute top-3 right-3 bg-choco-800 text-white font-bold px-3 py-1 rounded-full text-xs shadow">Chef Special</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-bold text-xl text-choco-900">Bamboo Chicken</h3>
+                                <span class="font-bold text-lg text-pistachio-600">₹320</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Tender chicken marinated in wild herbs and rustic Odia spices, slow cooked inside fresh bamboo stalks over embers.</p>
+                        </div>
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100 text-xs text-gray-500">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-600 inline-block"></span> Non-Veg • Traditional Cooking
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-card category-veg bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&q=80&w=600" alt="Mushroom Besara" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/8A9A5B/FFFFFF?text=Mushroom+Besara'">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-bold text-xl text-choco-900">Mushroom Besara</h3>
+                                <span class="font-bold text-lg text-pistachio-600">₹210</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Fresh paddy straw mushrooms cooked in a signature aromatic mustard paste gravy tempered with mustard seeds and curry leaves.</p>
+                        </div>
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100 text-xs text-gray-500">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-600 inline-block"></span> Pure Veg • Authentic Odia
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-card category-veg bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=600" alt="Authentic Odia Dalma" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/3E2723/FFFFFF?text=Odia+Dalma'">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-bold text-xl text-choco-900">Traditional Odia Dalma</h3>
+                                <span class="font-bold text-lg text-pistachio-600">₹140</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Lentils simmered with raw papaya, brinjal, pumpkin, and local vegetables, finished with ghee and roasted cumin-chilli powder.</p>
+                        </div>
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100 text-xs text-gray-500">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-600 inline-block"></span> Pure Veg • Healthy & Comfort
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-card category-special category-veg bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&q=80&w=600" alt="Royal Odia Thali" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/8A9A5B/FFFFFF?text=Odia+Veg+Thali'">
+                        <span class="absolute top-3 right-3 bg-pistachio-500 text-choco-900 font-bold px-3 py-1 rounded-full text-xs shadow">Popular</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-bold text-xl text-choco-900">Grand Odia Veg Thali</h3>
+                                <span class="font-bold text-lg text-pistachio-600">₹260</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Complete platter featuring Rice, Dalma, Saaga Bhaja, Alu Pota Pittika, Khatta, Papad, Salad & traditional Sweet.</p>
+                        </div>
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100 text-xs text-gray-500">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-600 inline-block"></span> Pure Veg • Full Meal Platter
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-card category-sweet category-special bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&q=80&w=600" alt="Chhena Poda" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/3E2723/FFFFFF?text=Chhena+Poda'">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif font-bold text-xl text-choco-900">Baked Chhena Poda</h3>
+                                <span class="font-bold text-lg text-pistachio-600">₹120</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Odisha's iconic baked cottage cheese dessert, caramelized with sugar, cardamom, and garnished with roasted cashews.</p>
+                        </div>
+                        <div class="flex items-center gap-2 pt-3 border-t border-gray-100 text-xs text-gray-500">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-600 inline-block"></span> Pure Veg • Famous Dessert
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-pistachio-600 font-semibold text-sm uppercase tracking-widest">Visual Experience</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-choco-900 mt-1 mb-4">Gallery & Atmosphere</h2>
+                <div class="w-20 h-1 bg-pistachio-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Gallery Card 1 -->
+                <div class="relative group overflow-hidden rounded-2xl bg-choco-100 aspect-square border border-gray-200">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=600" alt="Ambiance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-choco-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-sm font-medium"><i class="fa-solid fa-chair mr-2 text-pistachio-400"></i>Cozy Indoor Seating</span>
+                    </div>
+                </div>
+                <!-- Gallery Card 2 -->
+                <div class="relative group overflow-hidden rounded-2xl bg-choco-100 aspect-square border border-gray-200">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=600" alt="Dining Experience" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-choco-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-sm font-medium"><i class="fa-solid fa-utensils mr-2 text-pistachio-400"></i>Family Dining</span>
+                    </div>
+                </div>
+                <!-- Gallery Card 3 -->
+                <div class="relative group overflow-hidden rounded-2xl bg-choco-100 aspect-square border border-gray-200">
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&q=80&w=600" alt="Chef Special Preparation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-choco-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-sm font-medium"><i class="fa-solid fa-fire mr-2 text-pistachio-400"></i>Kitchen Creations</span>
+                    </div>
+                </div>
+                <!-- Gallery Card 4 -->
+                <div class="relative group overflow-hidden rounded-2xl bg-choco-100 aspect-square border border-gray-200">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&q=80&w=600" alt="Odia Spices" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-choco-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-sm font-medium"><i class="fa-solid fa-mortar-pestle mr-2 text-pistachio-400"></i>Authentic Spices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Menu / QR Section -->
+    <section id="digital-menu" class="py-16 bg-choco-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-choco-800 rounded-3xl border border-choco-700 p-8 sm:p-12 md:flex items-center justify-between gap-8 shadow-2xl">
+                <div class="space-y-4 max-w-xl mb-8 md:mb-0">
+                    <span class="bg-pistachio-500/20 text-pistachio-400 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-pistachio-500/30">Contactless Dining</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold">Scan for Digital Menu & Instant Ordering</h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        Prefer contactless browsing or quick payments? Scan our official QR code using your mobile camera or smartphone scanner to access the full digital menu directly at your table.
+                    </p>
+                    <div class="flex items-center gap-4 pt-2">
+                        <div class="flex items-center gap-2 text-xs text-pistachio-300">
+                            <i class="fa-solid fa-qrcode text-lg"></i> Fast & Easy Access
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-pistachio-300">
+                            <i class="fa-solid fa-mobile-screen-button text-lg"></i> Mobile Friendly
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Styled QR Code Card -->
+                <div class="shrink-0 flex justify-center">
+                    <div class="bg-white p-6 rounded-2xl shadow-xl text-center border-4 border-pistachio-400 max-w-[220px]">
+                        <div class="w-40 h-40 bg-gray-100 rounded-xl flex items-center justify-center p-2 mb-3 border border-gray-200">
+                            <!-- SVG QR Code Placeholder -->
+                            <svg class="w-full h-full text-choco-900" viewBox="0 0 100 100" fill="currentColor">
+                                <path d="M10,10 h30 v30 h-30 z M15,15 v20 h20 v-20 z M22,22 h6 v6 h-6 z"></path>
+                                <path d="M60,10 h30 v30 h-30 z M65,15 v20 h20 v-20 z M72,22 h6 v6 h-6 z"></path>
+                                <path d="M10,60 h30 v30 h-30 z M15,65 v20 h20 v-20 z M22,72 h6 v6 h-6 z"></path>
+                                <rect x="45" y="10" width="8" height="8"></rect>
+                                <rect x="45" y="25" width="8" height="15"></rect>
+                                <rect x="60" y="50" width="10" height="10"></rect>
+                                <rect x="75" y="50" width="15" height="8"></rect>
+                                <rect x="50" y="65" width="8" height="25"></rect>
+                                <rect x="65" y="75" width="25" height="8"></rect>
+                                <rect x="80" y="65" width="10" height="8"></rect>
+                            </svg>
+                        </div>
+                        <span class="text-choco-900 font-bold text-xs uppercase tracking-wider block">Spice Garden QR</span>
+                        <span class="text-gray-500 text-[10px]">Scan with phone camera</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <footer id="contact" class="bg-choco-900 text-white pt-16 pb-8 border-t border-choco-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-choco-800">
+                
+                <!-- Restaurant Info -->
+                <div class="md:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-pistachio-400 flex items-center justify-center text-choco-900 font-bold">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold">Spice Garden</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Bringing traditional Odia gastronomy & authentic spices to the heart of Berhampur. Visit us for an unforgettable dining experience.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-full bg-choco-800 hover:bg-pistachio-500 hover:text-choco-900 transition-colors flex items-center justify-center text-gray-300">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-choco-800 hover:bg-pistachio-500 hover:text-choco-900 transition-colors flex items-center justify-center text-gray-300">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-choco-800 hover:bg-pistachio-500 hover:text-choco-900 transition-colors flex items-center justify-center text-gray-300">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="md:col-span-4 space-y-3">
+                    <h3 class="font-serif font-bold text-lg text-pistachio-400 mb-2">Location & Contact</h3>
+                    
+                    <div class="flex items-start gap-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-location-dot mt-1 text-pistachio-400"></i>
+                        <div>
+                            <p class="font-semibold text-white">Spice Garden Restaurant</p>
+                            <p>Main Road, Near Medical College Square</p>
+                            <p>Berhampur, Ganjam, Odisha - 760004</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 text-sm text-gray-300 pt-2">
+                        <i class="fa-solid fa-phone text-pistachio-400"></i>
+                        <span>+91 94370 12345 / +91 0680 2234567</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-clock text-pistachio-400"></i>
+                        <span>Open Daily: 8:00 AM – 10:30 PM</span>
+                    </div>
+                </div>
+
+                <!-- Map Placeholder -->
+                <div class="md:col-span-4 space-y-3">
+                    <h3 class="font-serif font-bold text-lg text-pistachio-400 mb-2">Find Us</h3>
+                    <div class="w-full h-40 rounded-xl bg-choco-800 border border-choco-700 overflow-hidden relative group flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=500" alt="Map View" class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity">
+                        <div class="absolute text-center p-3">
+                            <i class="fa-solid fa-map-location-dot text-2xl text-pistachio-400 mb-1"></i>
+                            <span class="block text-xs font-semibold text-white">Berhampur, Odisha</span>
+                            <a href="https://maps.google.com" target="_blank" class="inline-block mt-1 text-[11px] bg-pistachio-500 text-choco-900 font-bold px-3 py-1 rounded-full shadow">Open Map</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 text-center text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Spice Garden Restaurant, Berhampur. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-pistachio-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-pistachio-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reservation Modal -->
+    <div id="reservation-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100 animate-fadeIn">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-choco-900 text-xl w-8 h-8 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-pistachio-100 text-pistachio-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <h3 class="font-serif font-bold text-2xl text-choco-900">Table Reservation</h3>
+                <p class="text-xs text-gray-500 mt-1">Book your spot at Spice Garden, Berhampur</p>
+            </div>
+
+            <form id="reservation-form" onsubmit="handleReservation(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-choco-900 mb-1">Full Name</label>
+                    <input type="text" required placeholder="Enter your name" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-pistachio-500 text-sm">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-choco-900 mb-1">Phone Number</label>
+                        <input type="tel" required placeholder="Mobile No." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-pistachio-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-choco-900 mb-1">Guests</label>
+                        <select class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-pistachio-500 text-sm">
+                            <option>2 People</option>
+                            <option>4 People</option>
+                            <option>6 People</option>
+                            <option>8+ Group</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-choco-900 mb-1">Date</label>
+                        <input type="date" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-pistachio-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-choco-900 mb-1">Time</label>
+                        <input type="time" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-pistachio-500 text-sm">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-pistachio-500 hover:bg-pistachio-400 text-choco-900 font-bold py-3 rounded-xl transition-all shadow-md mt-2">
+                    Confirm Reservation
+                </button>
+            </form>
+
+            <div id="reservation-success" class="hidden text-center py-6 space-y-3">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h4 class="font-serif font-bold text-xl text-choco-900">Booking Confirmed!</h4>
+                <p class="text-sm text-gray-600">Thank you for choosing Spice Garden. We look forward to welcoming you.</p>
+                <button onclick="closeModal()" class="bg-choco-900 text-white px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider mt-2">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Drawer Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile drawer on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            });
+        });
+
+        // Menu Filtering Logic
+        function filterMenu(category) {
+            const cards = document.querySelectorAll('.menu-card');
+            const filterBtns = document.querySelectorAll('.menu-filter-btn');
+
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active', 'bg-choco-900', 'text-white');
+                btn.classList.add('bg-white', 'text-choco-900');
+            });
+
+            event.target.classList.add('active', 'bg-choco-900', 'text-white');
+            event.target.classList.remove('bg-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(`category-${category}`)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Reservation Modal Logic
+        const modal = document.getElementById('reservation-modal');
+        const reservationForm = document.getElementById('reservation-form');
+        const reservationSuccess = document.getElementById('reservation-success');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            reservationForm.classList.remove('hidden');
+            reservationSuccess.classList.add('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        function handleReservation(event) {
+            event.preventDefault();
+            reservationForm.classList.add('hidden');
+            reservationSuccess.classList.remove('hidden');
+        }
+
+        // Close Modal on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
